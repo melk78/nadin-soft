@@ -1,0 +1,17 @@
+{
+  "message": {
+    "hello": "سلام",
+    "welcome": "به برنامه ما خوش آمدید",
+    "goodbye": "خداحافظ"
+  },
+  "navigation": {
+    "home": "خانه",
+    "about": "درباره ما",
+    "contact": "تماس با ما"
+  },
+  "buttons": {
+    "submit": "ارسال",
+    "cancel": "لغو",
+    "save": "ذخیره"
+  }
+}

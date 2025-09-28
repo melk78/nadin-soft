@@ -1,0 +1,24 @@
+// Vuetify SCSS Variables
+// https://vuetifyjs.com/en/features/sass-variables/
+
+// Import the Vuetify styles first
+@use 'vuetify/settings' with (
+
+  // Typography
+  $body-font-family: (IRANSansX, 'Roboto', sans-serif),
+  $heading-font-family: (IRANSansX, 'Roboto', sans-serif),
+
+  // Border radius
+  $border-radius-root: 4px,
+
+  // Elevation
+  $shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2),
+  $shadow-key-penumbra-opacity: rgba(0, 0, 0, 0.14),
+  $shadow-key-ambient-opacity: rgba(0, 0, 0, 0.12)
+);
+
+// Custom variables for the project
+:root {
+  --app-max-width: 1280px;
+  --app-padding: 2rem;
+}

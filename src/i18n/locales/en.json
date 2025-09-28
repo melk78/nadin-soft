@@ -1,0 +1,17 @@
+{
+  "message": {
+    "hello": "Hello",
+    "welcome": "Welcome to our application",
+    "goodbye": "Goodbye"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}
