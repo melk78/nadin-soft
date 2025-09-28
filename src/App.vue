@@ -1,7 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import {useI18n} from "vue-i18n";
+const t = useI18n();
 </script>
 
 <template>
@@ -12,24 +13,23 @@ import LanguageSwitcher from './components/LanguageSwitcher.vue'
       <LanguageSwitcher />
     </v-app-bar>
 
-    <v-main>
-      <v-container>
-        <header>
-          <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+<!--    <v-main>-->
+<!--      <v-container>-->
+<!--        <header>-->
+<!--          <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
 
-          <div class="wrapper">
-            <HelloWorld msg="You did it!" />
+<!--          <div class="wrapper">-->
 
-            <v-tabs>
-              <v-tab to="/">{{ $t('navigation.home') }}</v-tab>
-              <v-tab to="/about">{{ $t('navigation.about') }}</v-tab>
-            </v-tabs>
-          </div>
-        </header>
+<!--            <v-tabs>-->
+<!--              <v-tab to="/">{{ $t('navigation.home') }}</v-tab>-->
+<!--              <v-tab to="/about">{{ $t('navigation.about') }}</v-tab>-->
+<!--            </v-tabs>-->
+<!--          </div>-->
+<!--        </header>-->
 
-        <RouterView />
-      </v-container>
-    </v-main>
+<!--        <RouterView />-->
+<!--      </v-container>-->
+<!--    </v-main>-->
   </v-app>
 </template>
 

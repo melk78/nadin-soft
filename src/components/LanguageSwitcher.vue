@@ -1,8 +1,8 @@
 <template>
   <v-card class="language-switcher ma-4">
-    <v-card-title class="text-h4">{{ $t('message.hello') }}</v-card-title>
+    <v-card-title class="text-h4">{{ t('message.hello') }}</v-card-title>
     <v-card-text>
-      <p class="text-body-1">{{ $t('message.welcome') }}</p>
+      <p class="text-body-1">{{ t('message.welcome') }}</p>
 
       <v-card-subtitle class="mt-4">Select Language</v-card-subtitle>
       <v-btn-group class="my-4">
@@ -26,22 +26,22 @@
       <v-card outlined class="mt-4 pa-4">
         <v-list>
           <v-list-item>
-            <v-list-item-title>{{ $t('navigation.home') }}</v-list-item-title>
+            <v-list-item-title>{{ t('navigation.home') }}</v-list-item-title>
           </v-list-item>
           <v-list-item>
-            <v-list-item-title>{{ $t('navigation.about') }}</v-list-item-title>
+            <v-list-item-title>{{ t('navigation.about') }}</v-list-item-title>
           </v-list-item>
           <v-list-item>
-            <v-list-item-title>{{ $t('navigation.contact') }}</v-list-item-title>
+            <v-list-item-title>{{ t('navigation.contact') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-card>
 
       <v-card outlined class="mt-4 pa-4">
         <v-card-actions>
-          <v-btn color="primary" class="mr-2">{{ $t('buttons.submit') }}</v-btn>
-          <v-btn color="error" class="mr-2">{{ $t('buttons.cancel') }}</v-btn>
-          <v-btn color="success">{{ $t('buttons.save') }}</v-btn>
+          <v-btn color="primary" class="mr-2">{{ t('buttons.submit') }}</v-btn>
+          <v-btn color="error" class="mr-2">{{ t('buttons.cancel') }}</v-btn>
+          <v-btn color="success">{{ t('buttons.save') }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-card-text>
@@ -52,7 +52,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const currentLocale = computed(() => locale.value)
 
 function changeLanguage(lang: 'en' | 'fa') {
