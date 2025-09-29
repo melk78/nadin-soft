@@ -1,35 +1,63 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import { RouterView } from 'vue-router'
 import {useI18n} from "vue-i18n";
+import { ref } from 'vue'
+import LoginView from "@/views/LoginView.vue";
+import {useDataUserStore} from "@/stores/user.js";
+
+const drawer = ref(true)
 const t = useI18n();
+// آیتم‌های منو با مسیرهای Vue Router
+const menuItems = [
+  { title: 'داشبورد', route: '/' },
+  { title: 'todo', route: '/todo' },
+  { title: 'آب و هوا', route: '/weather' },
+  { title: 'پروفایل', route: '/profile' },
+]
+const isActive = ref(true);
+const userDate = useDataUserStore();
+const getData = userDate.getUserName;
+
+console.log(getData);
+if(getData.userName.length > 0){
+  isActive.value = false;
+}
 </script>
 
 <template>
   <v-app>
-    <v-app-bar color="primary" density="compact">
-      <v-app-bar-title>{{ $t('app.title', 'Vue App') }}</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <LanguageSwitcher />
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>داشبورد من</v-toolbar-title>
     </v-app-bar>
 
-<!--    <v-main>-->
-<!--      <v-container>-->
-<!--        <header>-->
-<!--          <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
-
-<!--          <div class="wrapper">-->
-
-<!--            <v-tabs>-->
-<!--              <v-tab to="/">{{ $t('navigation.home') }}</v-tab>-->
-<!--              <v-tab to="/about">{{ $t('navigation.about') }}</v-tab>-->
-<!--            </v-tabs>-->
-<!--          </div>-->
-<!--        </header>-->
-
-<!--        <RouterView />-->
-<!--      </v-container>-->
-<!--    </v-main>-->
+     <v-main>
+      <v-container>
+        <v-navigation-drawer
+            v-model="drawer"
+            app
+            permanent
+            location="right"
+            color="primary"
+            style="padding: 0; margin: 0"
+        >
+        <v-col style="padding: 0">
+            <v-list style="background: #2c3e50">
+              <v-list-item
+                  v-for="item in menuItems"
+                  :key="item.title"
+                  :to="item.route"
+                  link
+                  style="width: 100%; text-align: right; background: #2c3e50"
+              >
+                <v-list-item-title style="color: white">{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+        </v-col>
+        </v-navigation-drawer>
+        <RouterView />
+      </v-container>
+      <login-view v-model:isActive="isActive"></login-view>
+    </v-main>
   </v-app>
 </template>
 

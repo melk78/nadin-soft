@@ -1,6 +1,6 @@
 @import './base.css';
 @import "fonts/IranSansX/iransansx.css";
-@import "icons/public/icons.css";
+@import "fonts/icons/public/icons.css";
 
 #app {
   max-width: 1280px;

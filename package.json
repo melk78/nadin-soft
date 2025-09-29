@@ -17,8 +17,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "icons:build": "fantasticon src/assets/icons -o ./src/assets/icons/public -n icons fantasticon"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "fantasticon": "^3.0.0",
