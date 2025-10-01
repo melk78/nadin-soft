@@ -4,8 +4,8 @@ import fa from './locales/fa.json'
 
 const i18n = createI18n({
   legacy: false, // you must set `false`, to use Composition API
-  locale: 'en', // set locale
-  fallbackLocale: 'en', // set fallback locale
+  locale: 'fa', // set locale
+  fallbackLocale: 'fa', // set fallback locale
   messages: {
     en,
     fa

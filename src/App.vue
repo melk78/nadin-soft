@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import {useI18n} from "vue-i18n";
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
 import LoginView from "@/views/LoginView.vue";
 import {useDataUserStore} from "@/stores/user.js";
 
@@ -16,12 +16,15 @@ const menuItems = [
 ]
 const isActive = ref(true);
 const userDate = useDataUserStore();
-const getData = userDate.getUserName;
+const getData = userDate.getUserDate;
 
-console.log(getData);
 if(getData.userName.length > 0){
   isActive.value = false;
 }
+
+onMounted( () => {
+  userDate.loadUser();
+})
 </script>
 
 <template>
@@ -41,13 +44,13 @@ if(getData.userName.length > 0){
             style="padding: 0; margin: 0"
         >
         <v-col style="padding: 0">
-            <v-list style="background: #2c3e50">
+            <v-list>
               <v-list-item
                   v-for="item in menuItems"
                   :key="item.title"
                   :to="item.route"
                   link
-                  style="width: 100%; text-align: right; background: #2c3e50"
+                  style="width: 100%; text-align: right;"
               >
                 <v-list-item-title style="color: white">{{ item.title }}</v-list-item-title>
               </v-list-item>

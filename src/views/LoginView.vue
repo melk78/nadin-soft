@@ -8,6 +8,7 @@ const DataUser = reactive({
   userName: '',
   email: '',
   password: '',
+  savedAt: new Date(),
 });
 
 const isActive = defineModel('isActive');
