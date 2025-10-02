@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?9e99c973b527732c2ce58711d754d762#iefix") format("embedded-opentype"),
-url("./icons.woff2?9e99c973b527732c2ce58711d754d762") format("woff2"),
-url("./icons.woff?9e99c973b527732c2ce58711d754d762") format("woff");
+    src: url("./icons.eot?048790265b5deacca0e21ec179a59b42#iefix") format("embedded-opentype"),
+url("./icons.woff2?048790265b5deacca0e21ec179a59b42") format("woff2"),
+url("./icons.woff?048790265b5deacca0e21ec179a59b42") format("woff");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -16,12 +16,33 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-eye:before {
+.icon-x:before {
     content: "\f101";
 }
-.icon-eye-slash:before {
+.icon-trash-can:before {
     content: "\f102";
 }
-.icon-arrow-right-from-bracket:before {
+.icon-plus:before {
     content: "\f103";
+}
+.icon-pen-clip:before {
+    content: "\f104";
+}
+.icon-location-arrow:before {
+    content: "\f105";
+}
+.icon-eye:before {
+    content: "\f106";
+}
+.icon-eye-slash:before {
+    content: "\f107";
+}
+.icon-circle-quarters:before {
+    content: "\f108";
+}
+.icon-check:before {
+    content: "\f109";
+}
+.icon-arrow-right-from-bracket:before {
+    content: "\f10a";
 }

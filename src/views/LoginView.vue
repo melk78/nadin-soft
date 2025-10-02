@@ -1,9 +1,10 @@
 <script setup>
 import {reactive, ref} from "vue";
 import {useDataUserStore} from "@/stores/user.js";
+import {useI18n} from "vue-i18n";
 
-const stateDataUser = useDataUserStore()
-
+const userStore = useDataUserStore()
+const { t } = useI18n();
 const DataUser = reactive({
   userName: '',
   email: '',
@@ -19,7 +20,7 @@ const form = ref(false);
 function onSubmit () {
   if (!form.value) return
 
-  stateDataUser.setUser(DataUser);
+  userStore.setUser(DataUser);
 
   loading.value = true
   setTimeout(() => (loading.value = false), 2000)
@@ -29,8 +30,8 @@ function onSubmit () {
 
 
 const rules = {
-  required: value => !!value || 'این فیلد ضروری است.',
-  min: v => v.length >= 8 || 'رمز وارد شده باید بیش از ۸ حرف باشد',
+  required: value => !!value || t('errors.required'),
+  min: v => v.length >= 8 || t('errors.min'),
 }
 
 const show = ref(false)
@@ -39,28 +40,26 @@ const show = ref(false)
 <template>
   <v-dialog v-model="isActive" persistent max-width="500">
 
-    <template v-slot:default="{ isActive }">
-      <v-card title="ثبت نام" style="background: white">
+    <template v-slot:default="{isActive}">
+      <v-card :title="$t('login.title')">
         <v-card-text>
           <v-form @submit.prevent="onSubmit"  v-model="form">
             <v-text-field
-                placeholder="نام کاربری"
+                :placeholder="$t('login.userName')"
                 v-model="DataUser.userName"
                 variant="outlined"
-                class="mt--8px"
                 :readonly="loading"
                 style="margin-top: 8px"
-                :rules="[() => !!DataUser.userName || 'این فیلد ضروری است']"
+                :rules="[() => !!DataUser.userName || $t('errors.required')]"
             ></v-text-field>
 
             <v-text-field
-                placeholder="ایمیل"
+                :placeholder="$t('login.email')"
                 v-model="DataUser.email"
-                class="mt--8px"
                 variant="outlined"
                 :readonly="loading"
                 style="margin-top: 8px"
-                :rules="[() => !!DataUser.email || 'این فیلد ضروری است']"
+                :rules="[() => !!DataUser.email || $t('errors.required')]"
             ></v-text-field>
 
             <v-text-field
@@ -68,7 +67,7 @@ const show = ref(false)
                 :append-icon="show ? 'icon-eye' : 'icon-eye-slash'"
                 :rules="[rules.required, rules.min]"
                 :type="show ? 'text' : 'password'"
-                placeholder="رمز عبور"
+                :placeholder="$t('login.password')"
                 variant="outlined"
                 style="margin-top: 8px"
                 :readonly="loading"
@@ -76,11 +75,11 @@ const show = ref(false)
                 @click:append="show = !show"
             ></v-text-field>
             <v-btn
-                text="تایید"
+                :text="$t('buttons.confirmation')"
                 :disabled="!form"
                 :loading="loading"
                 color="success"
-                size="large"
+                size="x-large"
                 type="submit"
                 style="margin-top: 24px"
                 variant="elevated"

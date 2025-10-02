@@ -1,18 +1,23 @@
 <script setup>
-import {ref} from "vue";
+import {computed} from "vue";
 import {useDataUserStore} from "@/stores/user.js";
+import {useI18n} from "vue-i18n";
 
+const { t } = useI18n();
 const userName = useDataUserStore().getUserDate.userName;
 const date = new Date();
 const hours = date.getHours();
 const min = date.getMinutes();
-const text = ref('روز بخیر خوش‌آمدید');
 
-if (hours >= 12 && hours < 18) {
-  text.value = 'عصر بخیر خوش آمدید';
-} else if (hours >= 18) {
-  text.value = 'شب بخیر خوش آمدید';
-}
+const massege = computed(() => {
+  if (hours >= 12 && hours < 18) {
+   return t('message.evening');
+  } else if (hours >= 18) {
+   return t('message.night');
+  } else {
+    return t('message.morning')
+  }
+})
 </script>
 
 <template>
@@ -21,11 +26,7 @@ if (hours >= 12 && hours < 18) {
         {{hours}}:{{min}}
       </h1>
       <h2>
-        {{text}} <strong>{{userName}}</strong>
+        <strong>{{userName}}</strong> {{massege}}
       </h2>
     </v-card>
 </template>
-
-<style scoped>
-
-</style>

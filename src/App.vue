@@ -1,19 +1,10 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import {useI18n} from "vue-i18n";
 import {onMounted, ref} from 'vue'
 import LoginView from "@/views/LoginView.vue";
 import {useDataUserStore} from "@/stores/user.js";
+import MenuBar from "@/views/MenuBar.vue";
 
-const drawer = ref(true)
-const t = useI18n();
-// آیتم‌های منو با مسیرهای Vue Router
-const menuItems = [
-  { title: 'داشبورد', route: '/' },
-  { title: 'todo', route: '/todo' },
-  { title: 'آب و هوا', route: '/weather' },
-  { title: 'پروفایل', route: '/profile' },
-]
 const isActive = ref(true);
 const userDate = useDataUserStore();
 const getData = userDate.getUserDate;
@@ -29,34 +20,13 @@ onMounted( () => {
 
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <v-toolbar-title>داشبورد من</v-toolbar-title>
+    <v-app-bar app color="primary">
+      <v-toolbar-title>app bar</v-toolbar-title>
     </v-app-bar>
 
      <v-main>
       <v-container>
-        <v-navigation-drawer
-            v-model="drawer"
-            app
-            permanent
-            location="right"
-            color="primary"
-            style="padding: 0; margin: 0"
-        >
-        <v-col style="padding: 0">
-            <v-list>
-              <v-list-item
-                  v-for="item in menuItems"
-                  :key="item.title"
-                  :to="item.route"
-                  link
-                  style="width: 100%; text-align: right;"
-              >
-                <v-list-item-title style="color: white">{{ item.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-        </v-col>
-        </v-navigation-drawer>
+       <menu-bar></menu-bar>
         <RouterView />
       </v-container>
       <login-view v-model:isActive="isActive"></login-view>

@@ -1,17 +1,52 @@
 {
   "message": {
-    "hello": "سلام",
-    "welcome": "به برنامه ما خوش آمدید",
-    "goodbye": "خداحافظ"
+    "morning": "صبح بخیر خوش آمدید",
+    "night": "شب بخیر خوش آمدید",
+    "evening": "عصر بخیر خوش آمدید"
   },
   "navigation": {
-    "home": "خانه",
-    "about": "درباره ما",
-    "contact": "تماس با ما"
+    "dashbord": "داشبورد",
+    "todo": "لیست کار ها",
+    "weather": "اطلاعات آب و هوا",
+    "profile": "تنظیمات کاربری"
   },
   "buttons": {
     "submit": "ارسال",
     "cancel": "لغو",
-    "save": "ذخیره"
+    "save": "ذخیره",
+    "confirmation": "تایید"
+  },
+  "errors": {
+   "required": "این فیلد ضروری است.",
+    "min": "رمز وارد شده باید بیش از ۸ حرف باشد",
+    "noWeather": "خطا در دریافت اطلاعات آب و هوا"
+  },
+  "login": {
+    "title": "ثبت نام",
+    "userName": "نام کاربری",
+    "password": "رمز عبور",
+    "email": "ایمیل",
+    "language": "زبان",
+    "farsi": "فارسی",
+    "english": "انگلیسی",
+    "theme": "تم",
+    "light": "حالت روشن",
+    "dark": "حالت تاریک"
+  },
+  "todo": {
+    "title": "لیست کارها",
+    "addTask": "افزودن کار جدید",
+    "taskPlaceholder": "کار خود را اینجا وارد کنید...",
+    "noTasks": "هیچ کاری موجود نیست، لطفاً یک کار اضافه کنید."
+  },
+  "weather": {
+    "city": "شهر",
+    "temperature": "دما",
+    "windDirection": "جهت باد",
+    "windSpeed": "سرعت باد",
+    "windy": "بادخیز",
+    "RelativelyWindy": "نسبتا بادخیز",
+    "Calm": "آرام",
+    "labelCity": "انتخاب شهر"
   }
 }

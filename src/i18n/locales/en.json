@@ -1,17 +1,52 @@
 {
   "message": {
-    "hello": "Hello",
-    "welcome": "Welcome to our application",
-    "goodbye": "Goodbye"
+    "morning": "good morning welcome",
+    "night": "good night welcome",
+    "evening": "good evening welcome"
   },
   "navigation": {
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact"
+    "dashbord": "dashbord",
+    "todo": "todo",
+    "weather": "weather",
+    "profile": "profile"
   },
   "buttons": {
     "submit": "Submit",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "confirmation": "confirm"
+  },
+  "errors": {
+    "required": "This field is required.",
+    "min": "The password entered must be more than 8 characters.",
+    "noWeather": "Error fetching weather data"
+  },
+  "login": {
+    "title": "Registration",
+    "userName": "user name",
+    "password": "password",
+    "language": "language",
+    "email": "email",
+    "farsi": "farsi",
+    "english": "english",
+    "theme": "theme",
+    "light": "light",
+    "dark": "dark"
+  },
+  "todo": {
+    "title": "Todo List",
+    "addTask": "Add New Task",
+    "taskPlaceholder": "Enter your task here...",
+    "noTasks": "No tasks available. Please add a task."
+  },
+  "weather": {
+    "city": "city",
+    "temperature": "temperature",
+    "windDirection": "wind direction",
+    "windSpeed": "wind speed",
+    "windy": "windy",
+    "RelativelyWindy": "Relatively windy",
+    "Calm": "Calm",
+    "labelCity": "Select City"
   }
 }

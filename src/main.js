@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
 import vuetify from './plugins/vuetify.js'
-import {watch} from "node:fs";
+import {watch} from "vue";
 
 const app = createApp(App)
 app.use(createPinia())

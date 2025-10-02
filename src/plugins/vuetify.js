@@ -4,6 +4,10 @@ import * as directives from 'vuetify/directives'
 import 'vuetify/styles' // استایل‌های پایه
 
 const vuetify = createVuetify({
+  rtl: {
+    fa: true,
+    en: false
+  },
   components,
   directives,
   theme: {

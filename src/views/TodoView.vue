@@ -1,55 +1,105 @@
 <script setup>
-import { shallowRef } from 'vue'
+import { ref } from "vue";
+import {useDataUserStore} from "@/stores/user.js";
+// import {useI18n} from "vue-i18n";
 
-const items = [
-  { id: 1, action: '15 min', headline: 'Brunch this weekend?', subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`, title: 'Ali Connors' },
-  { id: 2, action: '2 hr', headline: 'Summer BBQ', subtitle: `Wish I could come, but I'm out of town this weekend.`, title: 'me, Scrott, Jennifer' },
-  { id: 3, action: '6 hr', headline: 'Oui oui', subtitle: 'Do you have Paris recommendations? Have you ever been?', title: 'Sandra Adams' },
-  { id: 4, action: '12 hr', headline: 'Birthday gift', subtitle: 'Have any ideas about what we should get Heidi for her birthday?', title: 'Trevor Hansen' },
-  { id: 5, action: '18hr', headline: 'Recipe to try', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.', title: 'Britta Holt' },
-]
+const store = useDataUserStore();
+const todos = store.todos;
+// const {t}= useI18n();
+const newTodo = ref("");
+const isInput =ref(false);
 
-const selected = shallowRef([2])
+// add
+const addTodo = () => {
+  store.addTodo(newTodo.value);
+  newTodo.value = "";
+  isInput.value = false;
+};
+
+// deleted
+const removeTodo = (id) => {
+  store.removeTodo(id);
+};
+
+// edit
+const startEdit = (todo) => {
+  store.startEdit(todo);
+};
+
+const saveEdit = (todo) => {
+  store.saveEdit(todo, todo.text);
+};
 </script>
 
 <template>
-  <v-card class="mx-auto">
-    <v-toolbar color="pink">
-      <v-btn icon="mdi-menu"></v-btn>
+    <v-card outlined style="padding: 10px 16px">
+      <!-- title -->
+      <v-row flex="flex" align="center" justify="space-between" style="padding: 8px 16px 16px">
+        <v-card-title class="justify-center">{{$t('todo.title')}}</v-card-title>
+        <v-btn icon="icon-plus" size="small" color="primary" @click="isInput = true"></v-btn>
+      </v-row>
 
-      <v-toolbar-title>Inbox</v-toolbar-title>
+      <v-divider></v-divider>
+      <!-- list -->
+      <v-list>
+        <v-list-item
+            v-for="todo in todos"
+            :key="todo.id"
+            flex="flex"
+            style="padding:0;"
+        >
+          <!-- text -->
+          <template v-if="!todo.editing">
+            <v-row flex="flex" align="center" justify="space-between" style="padding:16px">
+              <v-list-item-title class="font-weight-bold">
+                {{ todo.text }}
+              </v-list-item-title>
 
-      <v-btn icon="mdi-magnify"></v-btn>
+              <v-list-item-action>
+                <v-btn icon="icon-pen-clip" class="mr-2" variant="tonal" size="x-small" color="success" @click="startEdit(todo)"/>
+                <v-btn icon="icon-trash-can" variant="tonal" size="x-small" color="red" @click="removeTodo(todo.id)"/>
+              </v-list-item-action>
+            </v-row>
 
-      <v-btn icon="mdi-checkbox-marked-circle"></v-btn>
-    </v-toolbar>
-
-    <v-list v-model:selected="selected" select-strategy="leaf">
-      <v-list-item
-          v-for="item in items"
-          :key="item.id"
-          :value="item.id"
-          active-class="text-pink"
-          class="py-3"
-      >
-        <v-list-item-title>{{ item.title }}</v-list-item-title>
-
-        <v-list-item-subtitle class="mb-1 text-high-emphasis opacity-100">{{ item.headline }}</v-list-item-subtitle>
-
-        <v-list-item-subtitle class="text-high-emphasis">{{ item.subtitle }}</v-list-item-subtitle>
-
-        <template v-slot:append="{ isSelected }">
-          <v-list-item-action class="flex-column align-end">
-            <small class="mb-4 text-high-emphasis opacity-60">{{ item.action }}</small>
-
-            <v-spacer></v-spacer>
-
-            <v-icon v-if="isSelected" color="yellow-darken-3">mdi-star</v-icon>
-
-            <v-icon v-else class="opacity-30">mdi-star-outline</v-icon>
-          </v-list-item-action>
-        </template>
-      </v-list-item>
-    </v-list>
-  </v-card>
+          </template>
+                    <!-- edit -->
+          <template v-else>
+            <v-row flex="flex" align="center" justify="space-between" style="padding:16px">
+              <v-text-field
+                  v-model="todo.text"
+                  :placeholder="$t('todo.taskPlaceholder')"
+                  dense
+                  hide-details
+                  variant="outlined"
+                  density="compact"
+                  @keyup.enter="saveEdit(todo)"
+                  class="pr-3"
+              />
+              <v-btn
+                  icon="icon-check"
+                  variant="flat"
+                  size="small"
+                  rounded color="success"
+                  @click="saveEdit(todo)"
+              >
+              </v-btn>
+            </v-row>
+          </template>
+        </v-list-item>
+      </v-list>
+      <!-- add -->
+      <v-card-actions v-if="isInput" class="pt-10">
+        <v-text-field
+            v-model="newTodo"
+            :placeholder="$t('todo.taskPlaceholder')"
+            dense
+            hide-details
+            variant="outlined"
+            @keyup.enter="addTodo"
+        />
+        <v-btn icon="icon-location-arrow" variant="flat" size="large" rounded color="primary" @click="addTodo"></v-btn>
+      </v-card-actions>
+    </v-card>
 </template>
+
+
