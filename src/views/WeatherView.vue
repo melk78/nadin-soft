@@ -38,41 +38,43 @@ const currentList = computed(() => [
 </script>
 
 <template>
+  <v-container class="d-flex justify-center pa-10">
+    <v-card width="600" outlined class="pa-6">
+      <v-autocomplete
+          v-model="selectedCity"
+          :items="allCity"
+          item-title="name"
+          variant="outlined"
+          :label="$t('weather.labelCity')"
+          :loading="loading"
+          @update:model-value="getWeatherApi"
+      />
 
-  <v-card class="card">
-    <v-autocomplete
-        v-model="selectedCity"
-        :items="allCity"
-        item-title="name"
-        variant="outlined"
-        :label="$t('weather.labelCity')"
-        :loading="loading"
-        @update:model-value="getWeatherApi"
-    />
+      <div v-if="!errorMsg">
+        <v-list>
+          <v-list-item
+              v-for="item in currentList"
+              :key="item.id"
+              class="card__item"
+          >
+            <v-list-item-title class="text-high-emphasis opacity-60">{{ item.label }}</v-list-item-title>
 
-    <div v-if="!errorMsg">
-      <v-list>
-        <v-list-item
-            v-for="item in currentList"
-            :key="item.id"
-            class="card__item"
-        >
-          <v-list-item-title class="text-high-emphasis opacity-60">{{ item.label }}</v-list-item-title>
+            <template v-slot:append>
+              <v-list-item-action class="flex-column align-end">
+                <strong>{{ item.text }}</strong>
+              </v-list-item-action>
+            </template>
+          </v-list-item>
 
-          <template v-slot:append>
-            <v-list-item-action class="flex-column align-end">
-              <strong>{{ item.text }}</strong>
-            </v-list-item-action>
-          </template>
-        </v-list-item>
+        </v-list>
+      </div>
+      <div v-else style="padding: 42px; text-align: center;">
+        {{errorMsg}}
+      </div>
 
-      </v-list>
-    </div>
-    <div v-else style="padding: 42px; text-align: center;">
-      {{errorMsg}}
-    </div>
+    </v-card>
+  </v-container>
 
-  </v-card>
 </template>
 <style scoped lang="scss">
 .card{

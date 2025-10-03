@@ -28,7 +28,7 @@ function itemProps (item) {
 
 <template>
   <v-container class="d-flex justify-center pa-10">
-    <v-card width="400" outlined class="pa-6">
+    <v-card width="600" outlined class="pa-6">
       <v-card-text>
         <v-text-field
             v-model="form.userName"

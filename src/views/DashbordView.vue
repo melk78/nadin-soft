@@ -24,7 +24,8 @@ const massege = computed(() => {
 </script>
 
 <template>
-    <v-card style="display: flex;flex-flow: column;  padding: 16px; text-align: center; gap: 16px">
+  <v-container class="d-flex justify-center pa-10">
+    <v-card width="600" outlined class="pa-6" align="center">
       <h1>
         {{hours}}:{{min}}
       </h1>
@@ -32,4 +33,6 @@ const massege = computed(() => {
         <strong>{{userName}}</strong> {{massege}}
       </h2>
     </v-card>
+  </v-container>
+
 </template>

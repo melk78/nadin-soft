@@ -30,7 +30,8 @@ const saveEdit = (todo) => {
 </script>
 
 <template>
-    <v-card outlined style="padding: 10px 16px">
+  <v-container class="d-flex justify-center pa-10">
+    <v-card width="600" outlined class="pa-6">
       <!-- title -->
       <v-row flex="flex" align="center" justify="space-between" style="padding: 8px 16px 16px">
         <v-card-title class="justify-center">{{$t('todo.title')}}</v-card-title>
@@ -60,7 +61,7 @@ const saveEdit = (todo) => {
             </v-row>
 
           </template>
-                    <!-- edit -->
+          <!-- edit -->
           <template v-else>
             <v-row flex="flex" align="center" justify="space-between" style="padding:16px">
               <v-text-field
@@ -98,6 +99,7 @@ const saveEdit = (todo) => {
         <v-btn icon="icon-location-arrow" variant="flat" size="large" rounded color="primary" @click="addTodo"></v-btn>
       </v-card-actions>
     </v-card>
+  </v-container>
 </template>
 
 
