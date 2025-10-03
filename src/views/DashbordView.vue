@@ -30,8 +30,12 @@ const massege = computed(() => {
         {{hours}}:{{min}}
       </h1>
       <h2>
-        <strong>{{userName}}</strong> {{massege}}
+        {{massege}}
       </h2>
+      <h2>
+        <strong>{{userName}}</strong>
+      </h2>
+
     </v-card>
   </v-container>
 

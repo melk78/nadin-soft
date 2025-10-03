@@ -21,12 +21,12 @@ const isMobile = computed(() => display.mobile.value);
 
 const drawer = ref(true);
 
-const menuItems = [
+const menuItems = ref([
   { title: t('navigation.dashbord'), route: '/' },
   { title: t('navigation.todo'), route: '/todo' },
   { title: t('navigation.weather'), route: '/weather' },
   { title: t('navigation.profile'), route: '/profile' },
-]
+])
 
 const closeDrawer = () => {
   if (display.mobile.value) drawer.value = false;

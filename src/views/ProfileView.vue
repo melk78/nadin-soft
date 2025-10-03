@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import {reactive, ref} from "vue";
 import { useDataUserStore } from "@/stores/user";
 
 const userStore = useDataUserStore();
@@ -24,6 +24,13 @@ function itemProps (item) {
     subtitle: item.value,
   }
 }
+// rules to
+const rules = {
+  required: value => !!value || t('errors.required'),
+  min: v => v.length >= 8 || t('errors.min'),
+}
+
+const show = ref(false)
 </script>
 
 <template>
@@ -45,8 +52,12 @@ function itemProps (item) {
         <v-text-field
             v-model="form.password"
             :label="$t('login.password')"
+            :append-icon="show ? 'icon-eye' : 'icon-eye-slash'"
+            :type="show ? 'text' : 'password'"
+            :rules="[rules.required, rules.min]"
             variant="outlined"
             dense
+            @click:append="show = !show"
         />
 
         <v-select
