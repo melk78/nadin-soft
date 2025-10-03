@@ -4,11 +4,14 @@ import {useDataUserStore} from "@/stores/user.js";
 import {useI18n} from "vue-i18n";
 
 const { t } = useI18n();
+// get user name from store
 const userName = useDataUserStore().getUserDate.userName;
+// date
 const date = new Date();
 const hours = date.getHours();
 const min = date.getMinutes();
 
+// set data for windly
 const massege = computed(() => {
   if (hours >= 12 && hours < 18) {
    return t('message.evening');

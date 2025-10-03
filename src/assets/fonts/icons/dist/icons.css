@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?048790265b5deacca0e21ec179a59b42#iefix") format("embedded-opentype"),
-url("./icons.woff2?048790265b5deacca0e21ec179a59b42") format("woff2"),
-url("./icons.woff?048790265b5deacca0e21ec179a59b42") format("woff");
+    src: url("./icons.eot?bebd6635ab00a2880138b9397950f155#iefix") format("embedded-opentype"),
+url("./icons.woff2?bebd6635ab00a2880138b9397950f155") format("woff2"),
+url("./icons.woff?bebd6635ab00a2880138b9397950f155") format("woff");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -43,6 +43,9 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-check:before {
     content: "\f109";
 }
-.icon-arrow-right-from-bracket:before {
+.icon-bars:before {
     content: "\f10a";
+}
+.icon-arrow-right-from-bracket:before {
+    content: "\f10b";
 }

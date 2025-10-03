@@ -1,11 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import {useDataUserStore} from "@/stores/user.js";
-// import {useI18n} from "vue-i18n";
 
 const store = useDataUserStore();
 const todos = store.todos;
-// const {t}= useI18n();
 const newTodo = ref("");
 const isInput =ref(false);
 
